@@ -66,7 +66,7 @@
                     <li><a href="/">Home</a></li>
                     <li><a href="/ideas">Ideas</a></li>
                     <li><a href="/ideas/create">New Idea</a></li>
-                    <li><a href="/ideas/users">Users</a></li>
+                    <li><a href="/users">Users</a></li>
 
                     @can('view-admin')
                         <li>
@@ -91,6 +91,8 @@
                 <li><a href="/ideas">Ideas</a></li>
                 <li><a href="/ideas/create">New Idea</a></li>
                 <li><a href="/users">Users</a></li>
+                <li><a href="/music">Music</a></li>
+                <li><a href="/movie">Movie</a></li>
 
                 @can('view-admin')
                     <li>

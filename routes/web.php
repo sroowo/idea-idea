@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\MusicController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Idea;
 use App\Http\Controllers\IdeaController;
@@ -58,7 +60,8 @@ Route::post('/register',[RegisteredUserController::class,'store']);
 Route::get('/users',[UserController::class,'index'])->name('users.index');
 Route::get('/users/create',[UserController::class,'create'])->name('users.create');
 Route::post('/users',[UserController::class,'store'])->name('users.store');
-
+//show
+Route::get('/users/{user}', [UserController::class, 'show']);
 //edit
 Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 //update
@@ -68,3 +71,13 @@ Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.
 Route::get('/admin',function(){
     return 'Private Admin only area';
 })->can('view-admin');
+
+
+//music
+Route::get('/music',[MusicController::class,'index'])->name('music.index');
+Route::post('/music/{music}/like',[MusicController::class,'like']);
+
+//movie
+Route::get('/movie',[MovieController::class,'index'])->name('movie.index');
+Route::get('/movie/import', [MovieController::class, 'import']); // to import movies from api key
+Route::post('/movie/{movie}/like', [MovieController::class, 'like']);
