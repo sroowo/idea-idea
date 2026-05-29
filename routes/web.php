@@ -75,7 +75,7 @@ Route::get('/admin',function(){
 
 //music
 Route::get('/music',[MusicController::class,'index'])->name('music.index');
-Route::post('/music/{music}/like',[MusicController::class,'like']);
+Route::post('/music/{song}/like',[MusicController::class,'like']);
 
 //movie
 Route::get('/movie',[MovieController::class,'index'])->name('movie.index');

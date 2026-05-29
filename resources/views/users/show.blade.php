@@ -7,7 +7,9 @@
     </div>
     <h1 class="mt-5 text-white">Liked - album - song</h1>
     @foreach ($user->songs as $song)
-        <p class="mt-1">{{ $song->song }} - {{ $song->album }}</p>
+        <p class="mt-1">
+            {{ $song->album->name }} - {{ $song->name }}
+        </p>
     @endforeach
     <h1 class="mt-5 text-white">Liked Movies</h1>
     @foreach ($user->movies as $movie)

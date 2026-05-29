@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
     public function songs()
     {
-        return $this->belongsToMany(Music::class);
+        return $this->belongsToMany(Songs::class);
     }
     public function movies()
     {

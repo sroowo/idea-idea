@@ -9,9 +9,9 @@ use Illuminate\Support\Str;
 /**
  * @extends Factory<User>
  */
-class MusicFactory extends Factory
+class SongsFactory extends Factory
 {
-    
+
 
     /**
      * Define the model's default state.
@@ -20,14 +20,17 @@ class MusicFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            'song'=>(string) Str::random(10),
-            'album'=>fake()->name(),
+
+            'name' => fake()->sentence(2),
+
         ];
+
     }
 
     /**
      * Indicate that the model's email address should be unverified.
      */
-    
+
 }

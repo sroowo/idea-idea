@@ -1,13 +1,15 @@
 <x-layout>
     <p class="mt-6">Music Page</p>
-    @foreach ($music as $ms)
+    <p class="mt-6">Songs - Albums</p>
+    @foreach ($songs as $song)
         <div class="mt-6 grid grid-cols-4 gap-4">
-            <p>{{ $ms->song }}</p>
-            <p>{{ $ms->album }}</p>
-
-            <form method="POST" action="/music/{{ $ms->id }}/like">
+            <p>{{ $song->name }}</p>
+            <p>{{ $song->album->name }}</p>
+            <form method="POST" action="/music/{{ $song->id }}/like">
                 @csrf
-                <button type="submit" class="btn">Like</button>
+                <button type="submit" class="btn">
+                    Like
+                </button>
             </form>
         </div>
     @endforeach

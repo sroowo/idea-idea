@@ -20,23 +20,26 @@ class MovieController extends Controller
         $user->movies()->attach($movie->id);
         return redirect('/movie');
     }
+
+
     public function import()
     {
-        $response = Http::get(
-            'https://api.themoviedb.org/3/movie/popular',
-            [
-                'api_key' => env('TMDB_API_KEY')
-            ]
-        );
-        foreach ($response->json()['results'] as $movie) {
-            Movie::updateOrCreate(
+        for ($page = 1; $page <= 2; $page++) {
+            $response = Http::get(
+                'https://api.themoviedb.org/3/movie/popular',
                 [
-                    'tmdb_id' => $movie['id']
-                ],
-                [
-                    'title' => $movie['title']
+                    'api_key' => env('TMDB_API_KEY'),
+                    'page' => $page,
                 ]
+
             );
+            // dd($response);
+            foreach ($response->json()['results'] as $movie) {
+                Movie::updateOrCreate(
+                    ['tmdb_id' => $movie['id']],
+                    ['title' => $movie['title']]
+                );
+            }
         }
         return 'Movies Imported';
     }
